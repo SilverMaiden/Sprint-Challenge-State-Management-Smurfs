@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from 'axios';
-import {getSmurfs} from '../actions/actions';
+import {getSmurfs} from '../actions/index';
 import {connect} from 'react-redux'
+import SmurfForm from './Form';
+import Smurf from './Smurf';
 
 const mapStateToProps = state => ({
     smurfs: state.smurfs,
@@ -17,14 +19,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {console.log(this.props)}
+      <h1> List of smurfs: </h1>
+      {console.log(this.props.smurfs)}
+      <form>
       {this.props.smurfs.map(smurf => (
-        <h1> {smurf.name}</h1>
+          <Smurf smurf={smurf} />
       ))}
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      </form>
+        <SmurfForm />
       </div>
     );
   }
