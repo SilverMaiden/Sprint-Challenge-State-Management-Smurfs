@@ -4,7 +4,10 @@ import {
   FETCH_SMURF_FAIL,
   ADD_SMURF_START,
   ADD_SMURF_SUCCESS,
-  ADD_SMURF_ERROR
+  ADD_SMURF_ERROR,
+  REMOVE_SMURF_START,
+  REMOVE_SMURF_SUCCESS,
+  REMOVE_SMURF_FAIL,
 } from '../actions/index';
 
 
@@ -12,7 +15,10 @@ import {
 const initialState = {
     smurfs: [],
     error: '',
-    isFetching: false
+    isFetching: false,
+    isAdding: false,
+    isRemoving: false,
+
 };
 
 export const reducer = (state=initialState, action) => {
@@ -45,7 +51,6 @@ export const reducer = (state=initialState, action) => {
             return {
             ...state,
             isAdding: true,
-            error: ''
         }
         case ADD_SMURF_SUCCESS:
             return {
@@ -59,7 +64,23 @@ export const reducer = (state=initialState, action) => {
             error: action.payload
 
         }
+        case REMOVE_SMURF_START:
+            return {
+            ...state,
+            isRemoving: true
+        }
 
+        case REMOVE_SMURF_SUCCESS:
+            return {
+            ...state,
+            isRemoving: false
+        }
+
+        case REMOVE_SMURF_FAIL:
+            return {
+            ...state,
+            error:action.payload
+        }
 
         default:
             return state;

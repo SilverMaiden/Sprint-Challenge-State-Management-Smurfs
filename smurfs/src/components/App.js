@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from 'axios';
-import {getSmurfs} from '../actions/index';
+import {getSmurfs, removeSmurf} from '../actions/index';
 import {connect} from 'react-redux'
 import SmurfForm from './Form';
 import Smurf from './Smurf';
 
 const mapStateToProps = state => ({
-    smurfs: state.smurfs,
-    isFetching: state.isFetching,
-    error: state.error
+    smurfs: state.smurfs
 })
+
+const mapDispatchToProps ={
+    getter: getSmurfs,
+    deleter: removeSmurf
+}
 
 class App extends Component {
     componentDidMount() {
-       this.props.getSmurfs();
+       this.props.getter();
     }
   render() {
     return (
@@ -23,7 +26,7 @@ class App extends Component {
       {console.log(this.props.smurfs)}
       <form>
       {this.props.smurfs.map(smurf => (
-          <Smurf smurf={smurf} />
+          <p onClick={this.props.deleter(smurf.id)}> {smurf.name}</p>
       ))}
       </form>
         <SmurfForm />
@@ -32,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, {getSmurfs})(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
