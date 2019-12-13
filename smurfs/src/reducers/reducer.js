@@ -47,7 +47,7 @@ export const reducer = (state=initialState, action) => {
               };
         // Adding New Smurfs
         case ADD_SMURF_START:
-            console.log("yay I'm loadgin");
+            console.log("yay I'm loading");
             return {
             ...state,
             isAdding: true,

@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {removeSmurf} from '../actions/index';
+import {connect} from 'react-redux';
+import {Link, Redirect} from "react-router-dom";
 
 const Smurf = props => {
-    console.log(props.smurf);
 
+    let handleClick = event => {
+        props.removeSmurf(props.smurf.id)
+    }
+    console.log(props)
     return (
-        <p>
-            <h3>{props.smurf.name} {props.smurf.age} {props.smurf.height}</h3>
+        <div>
+                <Link to={`/smurfs/${props.smurf.id}`}><h3>Name: {props.smurf.name}</h3></Link>
+                <h3>Age: {props.smurf.age}</h3>
+                <h3>Height: {props.smurf.height}</h3>
 
-            </p>
+                <Link to="/"><button onClick={handleClick}> Remove Smurf</button></Link>
+        </div>
     )
 }
 
-export default Smurf;
+export default connect(null, {removeSmurf})(Smurf);
