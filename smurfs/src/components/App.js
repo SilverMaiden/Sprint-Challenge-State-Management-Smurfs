@@ -20,27 +20,21 @@ const mapDispatchToProps ={
 }
 
 
-
 class App extends Component {
-    componentDidMount() {
-       this.props.getter();
-    }
   render() {
     return (
-    <Router>
-      <div className="App">
-      <Switch>
-        <Route exact path="/">
-            <Main />
-        </Route>
-        <Route exact path={`/smurfs/:id`}>
-            <SingleSmurf  />
-        </Route>
-    </Switch>
-
-
-      </div>
-  </Router>
+        <Router>
+          <div className="App">
+          <Switch>
+            <Route exact path="/">
+                <Main />
+            </Route>
+            <Route exact path={`/smurfs/:id`}>
+                <SingleSmurf  />
+            </Route>
+          </Switch>
+          </div>
+        </Router>
     );
   }
 }

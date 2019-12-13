@@ -12,16 +12,12 @@ const SmurfForm = props => {
     })
     const handleNameChange = event => {
         setSmurf({...smurf, name: event.target.value});
-        console.log(smurf);
-        console.log(props.addSmurf)
     }
     const handleAgeChange = event => {
             setSmurf({...smurf, age: event.target.value});
-            console.log(smurf);
         }
     const handleHeightChange = event => {
             setSmurf({...smurf, height: event.target.value});
-            console.log(smurf);
         }
 
     const handleSubmit = event => {

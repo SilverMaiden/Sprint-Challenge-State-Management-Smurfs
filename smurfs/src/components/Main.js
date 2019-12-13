@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Smurf from './Smurf';
 import SmurfForm from './Form';
 
@@ -16,6 +16,10 @@ const mapDispatchToProps ={
 
 
 const Main = props => {
+    useEffect(() => {
+        props.getter()
+
+    }, [])
 
     return (
         <div>
