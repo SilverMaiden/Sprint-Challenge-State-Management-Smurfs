@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 
 const Smurf = props => {
+    console.log(props.smurf);
 
     return (
-        <>
-            <p>{props.smurf.name}</p>
-        </>
+        <p>
+            <h3>{props.smurf.name} {props.smurf.age} {props.smurf.height}</h3>
 
+            </p>
     )
 }
 

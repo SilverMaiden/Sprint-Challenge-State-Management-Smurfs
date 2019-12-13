@@ -3,6 +3,7 @@ import {Button, Form, FormGroup, Label, Input, FormText} from "reactstrap";
 import {addSmurf} from '../actions/index';
 import {connect} from 'react-redux'
 
+
 const SmurfForm = props => {
     const [smurf, setSmurf] = useState({
         name: '',
@@ -12,6 +13,7 @@ const SmurfForm = props => {
     const handleNameChange = event => {
         setSmurf({...smurf, name: event.target.value});
         console.log(smurf);
+        console.log(props.addSmurf)
     }
     const handleAgeChange = event => {
             setSmurf({...smurf, age: event.target.value});
@@ -22,15 +24,17 @@ const SmurfForm = props => {
             console.log(smurf);
         }
 
+    const handleSubmit = event => {
+        props.addSmurf(smurf.name, smurf.age, smurf.height);
+    }
 
         return (
             <>
-                <Form >
+                <Form  >
                     <Input className="bar" name="name" id="name" placeholder="name" onChange={handleNameChange} />
                     <Input className="bar" name="age" id="age" placeholder="age" onChange={handleAgeChange}  />
                     <Input className="bar" name="height" id="height" placeholder="height" onChange={handleHeightChange}  />
-                    <Button onClick={props.addSmurf(smurf.name, smurf.age, smurf.height)}> Add Smurf </Button>
-                    <Button> Remove Smurf </Button>
+                    <Button onClick={handleSubmit} > Add Smurf </Button>
                 </Form>
             </>
         )

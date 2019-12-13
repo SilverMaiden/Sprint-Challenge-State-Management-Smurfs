@@ -43,9 +43,10 @@ export const addSmurf = (name, age, height) => dispatch => {
 export const removeSmurf = (itemId) => dispatch => {
     dispatch({type: REMOVE_SMURF_START});
     axios
-        .delete('http://localhost:3333/smurfs', {
+        .delete('http://localhost:3333/smurfs/', {
             params: {id: itemId}
         }).then(response => {
+            console.log(response);
             dispatch({type: REMOVE_SMURF_SUCCESS, payload: response})
         }).catch(err => {
             dispatch({type: REMOVE_SMURF_FAIL, payload: err})

@@ -23,11 +23,10 @@ class App extends Component {
     return (
       <div className="App">
       <h1> List of smurfs: </h1>
-      {console.log(this.props.smurfs)}
       <form>
       {this.props.smurfs.map(smurf => (
-          <p onClick={this.props.deleter(smurf.id)}> {smurf.name}</p>
-      ))}
+          <Smurf smurf={smurf}/>
+                ))}
       </form>
         <SmurfForm />
       </div>
